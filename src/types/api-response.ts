@@ -23,6 +23,6 @@ export type Blog = {
     image: string | null;
     username: string | null;
   };
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 };

@@ -23,6 +23,5 @@ model Blog {
   updatedAt DateTime @updatedAt
 
   @@index([title])
-  @@index([content])
   @@map("blogs")
 }

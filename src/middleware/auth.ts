@@ -14,7 +14,6 @@ export const requireAuth = factory.createMiddleware(async (c, next) => {
 
   if (!session) {
     throw new HTTPException(StatusCodes.UNAUTHORIZED, {
-      cause: 'Unauthorized',
       message: 'You are not authorized to access this resource',
     });
   }

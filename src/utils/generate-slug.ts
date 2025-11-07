@@ -7,11 +7,11 @@ export const generateSlug = (title: string): string => {
   const slug = title
     .toLowerCase()
     .trim()
-    .replace(/[^a-z0-9]\s-/g, '')
+    .replace(/[^a-z0-9\s-]/g, '')
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-');
 
-  const randomChars = Math.random().toString(36).slice(8);
+  const randomChars = Math.random().toString(36).substring(2, 8);
   const slugUri = encodeURIComponent(slug);
   const uniqueSlug = `${slugUri}-${randomChars}`;
 

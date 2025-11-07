@@ -68,8 +68,8 @@ const createBlogHandler = factory.createHandlers(
         image: newBlog.author.image,
         username: newBlog.author.username,
       },
-      createdAt: newBlog.createdAt,
-      updatedAt: newBlog.updatedAt,
+      createdAt: newBlog.createdAt.toISOString(),
+      updatedAt: newBlog.updatedAt.toISOString(),
     };
 
     return c.json<ApiSuccessResponse<Blog>>(
