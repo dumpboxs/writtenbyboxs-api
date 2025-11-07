@@ -6,7 +6,7 @@ import { createFactory } from 'hono/factory';
 /**
  * Lib
  */
-import { auth } from '@/lib';
+import { auth, db } from '@/lib';
 
 /**
  * Types
@@ -15,6 +15,11 @@ import type { AppBindings } from '@/types/app-bindings';
 
 export default createFactory<AppBindings>({
   initApp: app => {
+    app.use('*', async (c, next) => {
+      c.set('db', db);
+      await next();
+    });
+
     app.use('*', async (c, next) => {
       const session = await auth.api.getSession({ headers: c.req.raw.headers });
 
