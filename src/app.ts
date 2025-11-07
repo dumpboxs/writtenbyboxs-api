@@ -7,10 +7,11 @@ import { createApp } from '@/lib';
  * Routes
  */
 import indexRoute from '@/routes';
+import authRoute from '@/routes/auth';
 
 const app = createApp();
 
-const routes = [indexRoute] as const;
+const routes = [indexRoute, authRoute] as const;
 
 routes.forEach(route => {
   app.basePath('/api').route('/', route);
