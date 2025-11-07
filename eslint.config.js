@@ -5,7 +5,7 @@ import globals from 'globals';
 
 export default defineConfig(
   {
-    ignores: ['node_modules', 'dist'],
+    ignores: ['node_modules', 'dist', 'src/generated'],
   },
   {
     files: ['**/*.ts'],
@@ -22,7 +22,10 @@ export default defineConfig(
         'warn',
         { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
       ],
-      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_' },
+      ],
       '@typescript-eslint/require-await': 'off',
       '@typescript-eslint/no-misused-promises': [
         'error',
