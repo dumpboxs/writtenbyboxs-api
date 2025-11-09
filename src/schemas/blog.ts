@@ -31,4 +31,12 @@ export const createBlogSchema = z.object({
       error: 'Content must be at most 50000 characters long',
     }),
   status: blogStatusSchema.default('DRAFT'),
+  banner: z
+    .file()
+    .min(1, {
+      error: 'Banner is required',
+    })
+    .max(1024 * 1024 * 3, {
+      error: 'Banner size should be less than 3MB',
+    }),
 });
