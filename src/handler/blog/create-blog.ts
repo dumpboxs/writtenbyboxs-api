@@ -31,9 +31,9 @@ import type { ApiSuccessResponse, Blog } from '@/types';
 
 const createBlogHandler = factory.createHandlers(
   requireAuth,
-  zValidator('json', createBlogSchema),
+  zValidator('form', createBlogSchema),
   async c => {
-    const { title, description, content, status } = c.req.valid('json');
+    const { title, description, content, status } = c.req.valid('form');
     const user = c.get('user')!;
 
     const slug = generateSlug(title);
