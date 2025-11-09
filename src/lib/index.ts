@@ -3,3 +3,4 @@ export { default as createApp } from '@/lib/create-app';
 export * from '@/lib/logger';
 export * from '@/lib/db';
 export * from '@/lib/auth';
+export * from '@/lib/cloudinary';

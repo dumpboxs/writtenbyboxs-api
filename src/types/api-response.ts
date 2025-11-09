@@ -10,6 +10,15 @@ export type ApiSuccessResponse<T = void> = {
   message: string;
 } & (T extends void ? object : { data: T });
 
+export type BlogBanner = {
+  id: string;
+  publicId: string;
+  url: string;
+  secureUrl: string;
+  width: number;
+  height: number;
+};
+
 export type Blog = {
   id: string;
   title: string;
@@ -23,6 +32,7 @@ export type Blog = {
     image: string | null;
     username: string | null;
   };
+  banner: BlogBanner;
   createdAt: string;
   updatedAt: string;
 };

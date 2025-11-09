@@ -1,3 +1,19 @@
+model BlogBanner {
+  id        String @id @default(uuid())
+  publicId  String
+  url       String
+  secureUrl String
+  width     Int
+  height    Int
+
+  blog Blog[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("blog_banners")
+}
+
 enum BlogStatus {
   PUBLISHED
   DRAFT
@@ -8,6 +24,7 @@ enum BlogStatus {
 model Blog {
   id            String     @id @default(uuid())
   authorId      String
+  bannerId      String
   title         String
   description   String
   slug          String     @unique
@@ -17,11 +34,13 @@ model Blog {
   likesCount    Int        @default(0)
   commentsCount Int        @default(0)
 
-  author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  author User       @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  banner BlogBanner @relation(fields: [bannerId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  @@unique([id, bannerId])
   @@index([title])
   @@map("blogs")
 }
